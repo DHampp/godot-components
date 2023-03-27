@@ -1,11 +1,10 @@
-[gd_scene load_steps=8 format=3 uid="uid://6fvnj31e4ax7"]
+[gd_scene load_steps=7 format=3 uid="uid://6fvnj31e4ax7"]
 
 [ext_resource type="Script" path="res://addons/godot-components/test/character.gd" id="2_4yd2g"]
 [ext_resource type="Script" path="res://addons/godot-components/components/health_component.gd" id="2_ep1xr"]
 [ext_resource type="Script" path="res://addons/godot-components/components/velocity_component.gd" id="3_i3lfp"]
 [ext_resource type="Script" path="res://addons/godot-components/components/hurtbox_component.gd" id="4_ykvin"]
 [ext_resource type="Script" path="res://addons/godot-components/components/pathfind_component.gd" id="5_v4s4n"]
-[ext_resource type="Texture2D" uid="uid://bjhbnab1hloak" path="res://icon.svg" id="6_yh3pc"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_qnc4u"]
 
@@ -16,9 +15,6 @@ script = ExtResource("2_4yd2g")
 
 [node name="VelocityComponent" type="Node" parent="Character"]
 script = ExtResource("3_i3lfp")
-
-[node name="Sprite2D" type="Sprite2D" parent="Character"]
-texture = ExtResource("6_yh3pc")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Character"]
 shape = SubResource("RectangleShape2D_qnc4u")
