@@ -31,6 +31,9 @@ func set_current_health(value:float) -> void:
 func get_current_health() -> float:
 	return current_health
 
+func get_current_health_percent() -> float:
+	return current_health / max_health if max_health > 0 else 0.0
+
 func has_health_remaining() -> bool:
 	return not is_equal_approx(current_health, 0)
 func is_damaged() -> bool:
@@ -39,7 +42,6 @@ func is_damaged() -> bool:
 func _ready() -> void:
 	initialize_health()
 	pass
-
 func initialize_health() -> void:
 	set_current_health(max_health)
 	pass

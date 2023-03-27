@@ -30,5 +30,6 @@ func move(character:CharacterBody2D) -> void:
 	character.move_and_slide()
 	pass
 
-func set_max_speed(speed:float) -> void:
+func set_max_speed(value:float) -> void:
+	max_speed = value
 	pass
