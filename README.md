@@ -1,5 +1,5 @@
 # Godot Components
-
+## Documentation
 ## Credits
 Made by [DHampp](https://github.com/DHampp).  
 
