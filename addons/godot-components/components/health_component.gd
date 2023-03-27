@@ -1,12 +1,14 @@
 class_name HealthComponent
 extends Node
 
+## DESCRIPTION
 signal health_changed(health)
+## DESCRIPTION
 signal died()
 
-## TOOLTIP
+## DESCRIPTION
 @export var max_health:float = 0.0 : set=set_max_health, get=get_max_health
-## TOOLTIP
+## DESCRIPTION
 @export var suppress_damage_float:bool = false
 
 var current_health:float = 0.0 : set=set_current_health, get=get_current_health
@@ -40,9 +42,9 @@ func is_damaged() -> bool:
 	return current_health < max_health
 
 func _ready() -> void:
-	initialize_health()
+	_initialize_health()
 	pass
-func initialize_health() -> void:
+func _initialize_health() -> void:
 	set_current_health(max_health)
 	pass
 func damage(damage:float) -> void:
