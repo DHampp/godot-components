@@ -8,8 +8,6 @@ signal died()
 
 ## DESCRIPTION
 @export var max_health:float = 0.0 : set=set_max_health, get=get_max_health
-## DESCRIPTION
-@export var suppress_damage_float:bool = false
 
 var current_health:float = 0.0 : set=set_current_health, get=get_current_health
 var has_died : bool = false

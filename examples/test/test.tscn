@@ -1,0 +1,31 @@
+[gd_scene load_steps=7 format=3 uid="uid://k1grewlmqi08"]
+
+[ext_resource type="Script" path="res://examples/test/character.gd" id="1_a2p5f"]
+[ext_resource type="Script" path="res://addons/godot-components/components/velocity_component.gd" id="2_qsapv"]
+[ext_resource type="Script" path="res://addons/godot-components/components/pathfind_component.gd" id="3_msguh"]
+[ext_resource type="Script" path="res://addons/godot-components/components/health_component.gd" id="4_63o53"]
+[ext_resource type="Script" path="res://addons/godot-components/components/hurtbox_component.gd" id="5_5vqyj"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_qnc4u"]
+
+[node name="Test" type="Node"]
+
+[node name="Character" type="CharacterBody2D" parent="."]
+script = ExtResource("1_a2p5f")
+
+[node name="VelocityComponent" type="Node" parent="Character"]
+script = ExtResource("2_qsapv")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Character"]
+shape = SubResource("RectangleShape2D_qnc4u")
+
+[node name="PathfindComponent" type="Node2D" parent="Character" node_paths=PackedStringArray("velocity_component")]
+script = ExtResource("3_msguh")
+velocity_component = NodePath("../VelocityComponent")
+
+[node name="HealthComponent" type="Node" parent="Character"]
+script = ExtResource("4_63o53")
+
+[node name="HurtboxComponent" type="Area2D" parent="Character" node_paths=PackedStringArray("health_component")]
+script = ExtResource("5_5vqyj")
+health_component = NodePath("../HealthComponent")
