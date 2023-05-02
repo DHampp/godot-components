@@ -27,6 +27,7 @@ velocity_component = NodePath("../VelocityComponent")
 
 [node name="HealthComponent" type="Node" parent="Character"]
 script = ExtResource("4_63o53")
+max_health = 20.0
 
 [node name="HurtboxComponent" type="Area2D" parent="Character" node_paths=PackedStringArray("health_component")]
 script = ExtResource("5_5vqyj")

@@ -2,6 +2,7 @@ extends CharacterBody2D
 
 @onready var state_machine:StateMachine = StateMachine.new()
 @onready var velocity_component:VelocityComponent = $VelocityComponent
+@onready var pathfind_component:PathfindComponent = $PathfindComponent
 
 func _ready() -> void:
 	state_machine.add_state('idle', on_idle_entered, on_idle_update, on_idle_exited)
@@ -9,7 +10,10 @@ func _ready() -> void:
 	state_machine.start('idle')
 	pass
 func _physics_process(delta):
-	state_machine._update(delta)
+	#state_machine._update(delta)
+	pathfind_component.set_target_position(get_global_mouse_position())
+	pathfind_component.follow_path()
+	velocity_component.move(self)
 
 func get_input() -> Vector2:
 	return Input.get_vector("ui_left", "ui_right", "ui_up", "ui_down").normalized()

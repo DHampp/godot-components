@@ -36,6 +36,9 @@ func set_current_health(value:float) -> void:
 func get_current_health() -> float:
 	return current_health
 
+##
+@export var set_health_on_start:bool = true
+
 ## Description
 func is_damaged() -> bool:
 	return current_health < max_health
@@ -49,7 +52,8 @@ func heal(heal:float) -> void:
 	pass
 
 func _ready() -> void:
-	_initialize_health()
+	if set_health_on_start:
+		_initialize_health()
 	pass
 func _initialize_health() -> void:
 	set_current_health(max_health)
