@@ -3,9 +3,9 @@ extends Node2D
 
 @onready var navigation_agent:NavigationAgent2D = NavigationAgent2D.new()
 
-##
+## TOOLTIP
 @export var velocity_component:VelocityComponent = null
-##
+## TOOLTIP
 @export var debug_draw:bool = false
 
 func _ready() -> void:

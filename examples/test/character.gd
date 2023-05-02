@@ -19,6 +19,7 @@ func on_idle_entered() -> void:
 	pass
 func on_idle_update(delta) -> String:
 	velocity_component.decelerate()
+	velocity_component.move(self)
 	
 	if get_input() != Vector2.ZERO:
 		return "move"
@@ -30,6 +31,9 @@ func on_idle_exited() -> void:
 func on_move_entered() -> void:
 	pass
 func on_move_update(delta) -> String:
+	velocity_component.accelerate_in_direction(get_input())
+	velocity_component.move(self)
+	
 	if get_input() == Vector2.ZERO:
 		return "idle"
 	return "move"

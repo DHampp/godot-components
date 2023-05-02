@@ -16,6 +16,7 @@ func accelerate_to_velocity(vel:Vector2) -> void:
 	velocity = velocity.lerp(vel, 0)
 	pass
 func accelerate_in_direction(direction:Vector2) -> void:
+	velocity = velocity.lerp(direction, 0.1)
 	pass
 func get_max_velocity(direction:Vector2) -> Vector2:
 	return direction #* 

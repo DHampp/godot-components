@@ -19,6 +19,6 @@ func on_area_entered(area:Area2D) -> void:
 	if not area is HitboxComponent:
 		return
 	
-	deal_damage(area.damage)
+	#deal_damage(area.damage)
 	emit_signal('hit_by_hitbox', area as HitboxComponent)
 	pass
