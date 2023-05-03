@@ -1,9 +1,9 @@
 class_name VelocityComponent
 extends Node
 
-##
+## The maximum
 @export var max_speed:float = 100
-##
+## 
 @export_range(0, 1) var acceleration:float = 1.0
 ##
 @export_range(0, 1) var deceleration:float = 1.0

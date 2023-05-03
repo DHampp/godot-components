@@ -1,9 +1,10 @@
 class_name HurtboxComponent
 extends Area2D
 
+## Emitted when the hitbox enters this hurtbox.
 signal hit_by_hitbox(hitbox)
 
-# TOOLTIP
+## TOOLTIP
 @export var health_component:HealthComponent = null
 
 
@@ -14,7 +15,6 @@ func _ready() -> void:
 func deal_damage(damage:float) -> void:
 	health_component.damage(damage)
 	pass
-
 func on_area_entered(area:Area2D) -> void:
 	if not area is HitboxComponent:
 		return

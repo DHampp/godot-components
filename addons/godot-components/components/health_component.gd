@@ -1,9 +1,9 @@
 class_name HealthComponent
 extends Node
 
-## Description
+## Emitted when the current_health changed.
 signal health_changed(health)
-## Description
+## Emitted when the current_health reached 0.
 signal died()
 
 ## Description
@@ -42,7 +42,7 @@ func get_current_health() -> float:
 ## Description
 func is_damaged() -> bool:
 	return current_health < max_health
-	
+
 var has_died : bool = false
 
 func damage(damage:float) -> void:
