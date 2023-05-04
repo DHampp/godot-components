@@ -19,7 +19,6 @@ func get_input() -> Vector2:
 	return Input.get_vector("ui_left", "ui_right", "ui_up", "ui_down").normalized()
 
 func on_idle_entered() -> void:
-	print('test')
 	pass
 func on_idle_update(delta) -> String:
 	velocity_component.decelerate()
