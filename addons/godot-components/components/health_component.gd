@@ -60,6 +60,7 @@ func heal(heal:float) -> void:
 
 
 func _ready() -> void:
+	print("test")
 	pass
 func _get_configuration_warnings() -> PackedStringArray:
 	var warnings := []

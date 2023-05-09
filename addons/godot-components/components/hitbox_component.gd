@@ -12,6 +12,11 @@ func get_damage() -> float:
 
 
 func _ready() -> void:
+	if not Engine.is_editor_hint():
+		return
+	
+	monitoring = false
+	input_pickable = false
 	pass
 func _get_configuration_warnings() -> PackedStringArray:
 	var warnings := []

@@ -30,6 +30,10 @@ func on_area_entered(area:Area2D) -> void:
 
 
 func _ready() -> void:
+	if Engine.is_editor_hint():
+		monitorable = false
+		input_pickable = false
+	
 	connect("area_entered", on_area_entered)
 	pass
 func _get_configuration_warnings() -> PackedStringArray:

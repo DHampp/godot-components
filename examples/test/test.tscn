@@ -2,36 +2,26 @@
 
 [ext_resource type="Script" path="res://examples/test/character.gd" id="1_a2p5f"]
 [ext_resource type="Script" path="res://addons/godot-components/components/velocity_component.gd" id="2_qsapv"]
-[ext_resource type="Script" path="res://addons/godot-components/components/pathfind_component.gd" id="3_msguh"]
 [ext_resource type="Script" path="res://addons/godot-components/components/health_component.gd" id="4_63o53"]
 [ext_resource type="Script" path="res://addons/godot-components/components/hurtbox_component.gd" id="5_fdndg"]
+[ext_resource type="Script" path="res://addons/godot-components/components/hitbox_component.gd" id="6_rl8x8"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_qnc4u"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_1005n"]
 
-[sub_resource type="NavigationPolygon" id="NavigationPolygon_42v0k"]
-vertices = PackedVector2Array(189, 370, 1021, 649, -65, 656, -249, -67, -63, -93, 233, -24, 360, 186, 494, 391, 419, 56, 319, -33, 872, -9, 822, 281)
-polygons = Array[PackedInt32Array]([PackedInt32Array(0, 1, 2), PackedInt32Array(0, 2, 3, 4, 5), PackedInt32Array(0, 5, 6), PackedInt32Array(7, 0, 6), PackedInt32Array(8, 7, 6, 9), PackedInt32Array(8, 9, 10, 11)])
-outlines = Array[PackedVector2Array]([PackedVector2Array(-249, -67, -65, 656, 1021, 649, 189, 370, 494, 391, 419, 56, 822, 281, 872, -9, 319, -33, 360, 186, 233, -24, -63, -93)])
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_jtyn3"]
 
 [node name="Test" type="Node"]
 
 [node name="Character" type="CharacterBody2D" parent="."]
 script = ExtResource("1_a2p5f")
 
-[node name="VelocityComponent" type="Node" parent="Character"]
-script = ExtResource("2_qsapv")
-
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Character"]
 shape = SubResource("RectangleShape2D_qnc4u")
 
-[node name="PathfindComponent" type="Node2D" parent="Character" node_paths=PackedStringArray("velocity_component")]
-script = ExtResource("3_msguh")
-velocity_component = NodePath("../VelocityComponent")
-
-[node name="NavigationAgent2D" type="NavigationAgent2D" parent="Character/PathfindComponent"]
-debug_enabled = true
+[node name="VelocityComponent" type="Node" parent="Character"]
+script = ExtResource("2_qsapv")
 
 [node name="HealthComponent" type="Node" parent="Character"]
 script = ExtResource("4_63o53")
@@ -39,11 +29,23 @@ max_health = 20.0
 current_health = 20.0
 
 [node name="HurtboxComponent" type="Area2D" parent="Character" node_paths=PackedStringArray("health_component")]
+input_pickable = false
+monitorable = false
 script = ExtResource("5_fdndg")
 health_component = NodePath("../HealthComponent")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Character/HurtboxComponent"]
 shape = SubResource("RectangleShape2D_1005n")
 
-[node name="NavigationRegion2D" type="NavigationRegion2D" parent="."]
-navigation_polygon = SubResource("NavigationPolygon_42v0k")
+[node name="HitboxComponent" type="Area2D" parent="."]
+position = Vector2(156, 136)
+input_pickable = false
+monitoring = false
+script = ExtResource("6_rl8x8")
+damage = 1.0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="HitboxComponent"]
+shape = SubResource("RectangleShape2D_jtyn3")
+
+[connection signal="died" from="Character/HealthComponent" to="Character" method="_on_health_component_died"]
+[connection signal="health_changed" from="Character/HealthComponent" to="Character" method="_on_health_component_health_changed"]
